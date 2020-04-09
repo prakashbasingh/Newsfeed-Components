@@ -118,6 +118,10 @@ const articles = document.querySelector('.articles')
   articles.appendChild(panelThirdParagraph)
   articles.appendChild(panelSpan)
 
+  // adding class names to the elements
+  panelDate.classList.add('date')
+  panelSpan.classList.add('expandButton')
+
 
 }
   const testpanel = makePanel({title: 'Sita', content: 'Ram'})
