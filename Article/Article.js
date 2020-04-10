@@ -140,9 +140,9 @@ const data = [
 }
 // console.log(makePanel())
   //   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-  // const panelElement = data.map(data => {
-  //   return makePanel(data)
-  // })
+  const panelElement = data.map(data => {
+    return makePanel(data)
+  })
 
 //   Hint: You will need to use createElement more than once here!
 
