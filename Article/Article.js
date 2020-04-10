@@ -99,10 +99,10 @@ const data = [
 //     <span class='expandButton'></span>
 //   </div>
   
-const articles = document.querySelector('.articles')
-
+    const articles = document.querySelector('.articles')
 // creating elements
-  function makePanel(title, date, firstParagraph, secondParagraph, thirdParagraph){
+  function makePanel({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+    const article = document.createElement('div')
     const panelTitle  = document.createElement('h2')
     const panelDate = document.createElement('p')
     const panelFirstParagraph = document.createElement('p')
@@ -111,14 +111,15 @@ const articles = document.querySelector('.articles')
     const panelSpan = document.createElement('span')
 
   // setting up structure of elements
-  articles.appendChild(panelTitle)
-  articles.appendChild(panelDate)
-  articles.appendChild(panelFirstParagraph)
-  articles.appendChild(panelSecondParagraph)
-  articles.appendChild(panelThirdParagraph)
-  articles.appendChild(panelSpan)
+  article.appendChild(panelTitle)
+  article.appendChild(panelDate)
+  article.appendChild(panelFirstParagraph)
+  article.appendChild(panelSecondParagraph)
+  article.appendChild(panelThirdParagraph)
+  article.appendChild(panelSpan)
 
   // adding class names to the elements
+  article.classList.add('article')
   panelDate.classList.add('date')
   panelSpan.classList.add('expandButton')
 
@@ -128,25 +129,39 @@ const articles = document.querySelector('.articles')
   panelFirstParagraph.textContent = firstParagraph
   panelSecondParagraph.textContent = secondParagraph
   panelThirdParagraph.textContent = thirdParagraph
-debugger
-  // 
-  return articals
+  panelSpan.textContent = 'Here are some texts'
+  //   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+   function articleOpen (event){
+    article.classList.toggle('article-open')
+  }
+  panelSpan.addEventListener('click', articleOpen)
+
+  return article
 }
-  const testpanel = makePanel({title: 'Sita', content: 'Ram'})
+// console.log(makePanel())
+  //   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  // const panelElement = data.map(data => {
+  //   return makePanel(data)
+  // })
 
 //   Hint: You will need to use createElement more than once here!
 
 //   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-//   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-function spanEvent (event){
-
-}
-panelSpan.addEventListener('click', spanEvent)
 //   Step 3: return the entire component.
 
-//   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  // panelElement.forEach(panelElement => {
+  //  return articles.appendChild(panelElement)
+  // })
 
 //   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
+
+
 // */
+
+
+
+
+  // const testpanel = makePanel({title: 'Son', content: 'Moon', firstParagraph:'excellent', secondParagraph: 'awsome', thirdParagraph: 'wonderful'})
+  // articals.appendChild(testPanel)
