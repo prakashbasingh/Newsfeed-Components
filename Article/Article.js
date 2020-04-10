@@ -143,16 +143,16 @@ const data = [
   const panelElement = data.map(data => {
     return makePanel(data)
   })
-
+ 
 //   Hint: You will need to use createElement more than once here!
 
 //   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
 //   Step 3: return the entire component.
 
-  // panelElement.forEach(panelElement => {
-  //  return articles.appendChild(panelElement)
-  // })
+  panelElement.forEach(panelElement => {
+   return articles.appendChild(panelElement)
+  })
 
 //   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
