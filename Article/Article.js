@@ -85,30 +85,85 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Advance Human Civilization lived millions of years ago',
+    date: '500 millions ago',
+    firstParagraph: 'lkofhaj[opiur nopajihfap0oi8 nmklojhfo iashf jnkjohpo0ishfd aspijh noipjha foij jnoij fgvaoipsj nojkha pdfgvhji noiphas fviuh isouiy ohgd ydgf ajhsdofg9a8u dfgouyfg gbfduy9 oBFDU9Y DFUYAO Ku auedfhgaio ajhgdf9ua dfoiagfa odbfauioydtf aodhgf a9ysdfg aosidufga9 osudfausoydfgao dvabuy aosifug auygfwe ksdfhjaposdfihalkd',
+    secondParagraph: 'lkofhaj[opiur nopajihfap0oi8 nmklojhfo iashf jnkjohpo0ishfd aspijh noipjha foij jnoij fgvaoipsj nojkha pdfgvhji noiphas fviuh isouiy ohgd ydgf ajhsdofg9a8u dfgouyfg gbfduy9 oBFDU9Y DFUYAO Ku auedfhgaio ajhgdf9ua dfoiagfa odbfauioydtf aodhgf a9ysdfg aosidufga9 osudfausoydfgao dvabuy aosifug auygfwe ksdfhjaposdfihalkd.',
+    thirdParagraph: 'lkofhaj[opiur nopajihfap0oi8 nmklojhfo iashf jnkjohpo0ishfd aspijh noipjha foij jnoij fgvaoipsj nojkha pdfgvhji noiphas fviuh isouiy ohgd ydgf ajhsdofg9a8u dfgouyfg gbfduy9 oBFDU9Y DFUYAO Ku auedfhgaio ajhgdf9ua dfoiagfa odbfauioydtf aodhgf a9ysdfg aosidufga9 osudfausoydfgao dvabuy aosifug auygfwe ksdfhjaposdfihalkd.'
+
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+// /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
+//   <div class="article">
+//     <h2>{title of the article}</h2>
+//     <p class="date">{date of the article}</p>
 
-    {three separate paragraph elements}
+//     {three separate paragraph elements}
 
-    <span class='expandButton'></span>
-  </div>
+//     <span class='expandButton'></span>
+//   </div>
+  
+    const articles = document.querySelector('.articles')
+// creating elements
+  function makePanel({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+    const article = document.createElement('div')
+    const panelTitle  = document.createElement('h2')
+    const panelDate = document.createElement('p')
+    const panelFirstParagraph = document.createElement('p')
+    const panelSecondParagraph = document.createElement('p')
+    const panelThirdParagraph = document.createElement('p')
+    const panelSpan = document.createElement('span')
 
-  Hint: You will need to use createElement more than once here!
+  // setting up structure of elements
+  article.appendChild(panelTitle)
+  article.appendChild(panelDate)
+  article.appendChild(panelFirstParagraph)
+  article.appendChild(panelSecondParagraph)
+  article.appendChild(panelThirdParagraph)
+  article.appendChild(panelSpan)
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+  // adding class names to the elements
+  article.classList.add('article')
+  panelDate.classList.add('date')
+  panelSpan.classList.add('expandButton')
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  // setting text content
+  panelTitle.textContent = title
+  panelDate.textContent = date
+  panelFirstParagraph.textContent = firstParagraph
+  panelSecondParagraph.textContent = secondParagraph
+  panelThirdParagraph.textContent = thirdParagraph
+  panelSpan.textContent = 'Here are some texts'
+  //   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+   function articleOpen (event){
+    article.classList.toggle('article-open')
+  }
+  panelSpan.addEventListener('click', articleOpen)
 
-  Step 3: return the entire component.
+  return article
+}
+// console.log(makePanel())
+  //   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  const panelElement = data.map(data => {
+    return makePanel(data)
+  })
+ 
+//   Hint: You will need to use createElement more than once here!
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+//   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+//   Step 3: return the entire component.
 
-*/
+  panelElement.forEach(panelElement => {
+   return articles.appendChild(panelElement)
+  })
+
+//   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+
+
+
+// */
