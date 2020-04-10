@@ -167,9 +167,3 @@ const data = [
 
 
 // */
-
-
-
-
-  // const testpanel = makePanel({title: 'Son', content: 'Moon', firstParagraph:'excellent', secondParagraph: 'awsome', thirdParagraph: 'wonderful'})
-  // articals.appendChild(testPanel)
